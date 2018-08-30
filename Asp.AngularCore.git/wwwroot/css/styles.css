@@ -1,3 +1,12 @@
 ﻿body {
     font-family: 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 }
+
+.img-resize {
+    width: 250px;
+    height: 170px;
+}
+
+.product-info {
+    list-style-type: none;
+}
