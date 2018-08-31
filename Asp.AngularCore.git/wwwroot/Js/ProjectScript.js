@@ -1,8 +1,4 @@
-﻿//var s = "Usman Haider Khan";
-
-//alert("Hello Usman");
-
-console.log("Hello Khan");
+﻿console.log("Hello Khan");
 var formdata = document.getElementById("theForm");
 formdata.hidden = true;
 
