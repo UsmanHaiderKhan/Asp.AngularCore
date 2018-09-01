@@ -1,9 +1,10 @@
-﻿console.log("Hello Khan");
-//var formdata = document.getElementById("theForm");
-//formdata.hidden = true;
+﻿
+console.log("Hello Khan");
+var formdata = document.getElementById("theForm");
+formdata.hidden = true;
 
-var theForm = $("#theForm");
-theForm.hide();
+//var theForm = $("#theForm");
+//theForm.hide();
 
 
 //var shopbtn = document.getElementById("buybtn");
