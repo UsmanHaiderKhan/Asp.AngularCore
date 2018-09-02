@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Angular Core App:@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="~/MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="~/MDB-Free/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        Well Come Usman
+        <menu>
+            <ul>
+                <li><a asp-controller="App" asp-action="Index"><span class="fa fa-home"></span>Home</a></li>
+                <li><a asp-controller="App" asp-action="About"><span class="fa fa-user"></span>About</a></li>
+                <li><a asp-controller="App" asp-action="Contact"><span class="fa fa-home"></span>Contact us</a></li>
+            </ul>
+        </menu>
+    </header>
+    <section>
+        @RenderBody()
+    </section>
+    <footer>
+        @DateTime.Now &copy;CopyRight Developers Team
+    </footer>
+    <!-- JQuery -->
+    <script type="text/javascript" src="~/MDB-Free/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="~/MDB-Free/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="~/MDB-Free/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="~/MDB-Free/js/mdb.min.js"></script>
+    <script src="~/js/ProjectScript.js"></script>
+</body>
+</html>
