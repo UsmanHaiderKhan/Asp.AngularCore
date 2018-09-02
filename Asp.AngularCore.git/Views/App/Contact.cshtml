@@ -1,21 +1,20 @@
 ﻿
-
+@model Contact
 @{
-    @ViewBag.Title= "Contact us";
-
+    ViewBag.Title = "Contact us";
 }
 <form method="post">
     <div>
-        <label for="exampleInputEmail">Your Name</label><br />
-        <input type="email" id="exampleInputEmail" name="name" placeholder="Enter email">
+        <label asp-for="Name">Your Name</label><br />
+        <input type="email" asp-for="Name" placeholder="Enter email">
     </div>
     <div>
-        <label for="exampleInputEmail">Email address</label><br />
-        <input type="email" id="exampleInputEmail" name="email" placeholder="Enter email">
+        <label asp-for="Email">Email address</label><br />
+        <input type="email" asp-for="Email" placeholder="Enter email">
     </div>
     <div>
-        <label for="exampleInputEmail">Subject</label><br />
-        <input type="text" id="exampleInputEmail" name="subject" placeholder="Enter Subject">
+        <label asp-for="Subject">Subject</label><br />
+        <input type="text" asp-for="Subject" placeholder="Enter Subject">
     </div>
     <div>
         <label for="exampleInputEmail">Phone No</label><br />
