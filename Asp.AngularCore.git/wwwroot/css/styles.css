@@ -25,3 +25,39 @@
         border: 2px solid #a52a2a;
         padding: 1px;
     }
+
+#Toggling {
+    cursor: pointer;
+}
+
+#loginForm {
+    padding: 5px;
+    border: 2px maroon inset;
+    display: inline-block;
+}
+
+    #loginForm input {
+        width: 800px;
+    }
+
+    #loginForm label {
+        width: 150px;
+        display: inline-block;
+    }
+
+
+    #loginForm input[type=checkbox], #loginForm button[type=submit] {
+        width: auto;
+    }
+
+menu li {
+    display: inline;
+}
+
+    menu li::after {
+        content: " |";
+    }
+
+    menu li:last-of-type::after {
+        content: "";
+    }
