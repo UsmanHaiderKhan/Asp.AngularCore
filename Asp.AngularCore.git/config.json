@@ -1,0 +1,8 @@
+﻿{
+  "color": {
+    "Favourite": "blue"
+  },
+  "ConnectionStrings": {
+    "LKConnectionString": "server=.;Database=LKDevelopers;user id=sa;password=123;Integrated Security=true;MultipleActiveResultSets=true;"
+  }
+}
