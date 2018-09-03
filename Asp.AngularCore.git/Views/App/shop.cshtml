@@ -1,0 +1,9 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IEnumerable<Product>
+<h1>Model Count</h1>
+<p>Count : @Model.Count() </p>
+@foreach (var v in Model)
+{
+    <li>@v.Title</li>
+
+}
