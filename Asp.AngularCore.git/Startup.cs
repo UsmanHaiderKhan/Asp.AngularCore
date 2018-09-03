@@ -22,6 +22,7 @@ namespace Asp.AngularCore.git
         {
             services.AddDbContext<LKContext>(cfg => { cfg.UseSqlServer(_configuration.GetConnectionString("LKConnectionString")); });
             services.AddTransient<IMailService, NullEmail>();
+            services.AddTransient<LkSeeds>();
             services.AddMvc();
         }
 
