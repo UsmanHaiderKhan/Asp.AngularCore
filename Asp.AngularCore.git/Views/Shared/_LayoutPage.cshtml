@@ -12,21 +12,26 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        Well Come Usman
-        <menu>
-            <ul>
-                <li><a asp-controller="App" asp-action="Index"><span class="fa fa-home"></span>Home</a></li>
-                <li><a asp-controller="App" asp-action="About"><span class="fa fa-user"></span>About</a></li>
-                <li><a asp-controller="App" asp-action="Contact"><span class="fa fa-home"></span>Contact us</a></li>
-            </ul>
-        </menu>
-    </header>
-    <section>
+    <div class="navbar navbar-light">
+        <header class="container">
+            <div class="">
+                <div class="navbar-brand">LK'Developers</div>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#men">&#9776;</button>
+            </div>
+            <menu id="men" class="collapse navbar-collapse">
+                <ul>
+                    <li><a asp-controller="App" asp-action="Index"><span class="fa fa-home"></span>Home</a></li>
+                    <li><a asp-controller="App" asp-action="About"><span class="fa fa-user"></span>About</a></li>
+                    <li><a asp-controller="App" asp-action="Contact"><span class="fa fa-home"></span>Contact us</a></li>
+                </ul>
+            </menu>
+        </header>
+    </div>
+    <section class="container">
         @RenderBody()
     </section>
-    <footer>
-        @DateTime.Now &copy;CopyRight Developers Team
+    <footer class="container">
+        <div class="text-center">@DateTime.Now &copy;CopyRight Developers Team</div>
     </footer>
     <!-- JQuery -->
     <script type="text/javascript" src="~/MDB-Free/js/jquery-3.3.1.min.js"></script>
