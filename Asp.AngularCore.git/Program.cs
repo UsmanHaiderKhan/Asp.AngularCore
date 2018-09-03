@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace Asp.AngularCore.git
 {
@@ -17,8 +11,20 @@ namespace Asp.AngularCore.git
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+.ConfigureAppConfiguration(SetUpConfiguration)
+.UseStartup<Startup>();
+        }
+
+        private static void SetUpConfiguration(WebHostBuilderContext context, IConfigurationBuilder builder)
+        {
+            builder.Sources.Clear();
+            builder.AddJsonFile("config.json", false, true)
+                // .AddXmlFile("config.xml", true)
+                .AddEnvironmentVariables();
+
+        }
     }
 }
