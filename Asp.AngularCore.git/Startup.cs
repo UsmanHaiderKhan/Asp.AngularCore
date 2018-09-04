@@ -27,7 +27,7 @@ namespace Asp.AngularCore.git
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, LkSeeds seeds)
         {
             if (env.IsDevelopment())
             {
@@ -52,6 +52,15 @@ namespace Asp.AngularCore.git
             {
                 await context.Response.WriteAsync("Hello World!");
             });
+
+            if (env.IsDevelopment())
+            {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetService<LkSeeds>();
+                    seeder.Seed();
+                }
+            }
         }
     }
 }
