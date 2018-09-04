@@ -2,7 +2,6 @@
 using Asp.AngularCore.git.Services;
 using Asp.AngularCore.git.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace Asp.AngularCore.git.Controller
 {
@@ -10,12 +9,12 @@ namespace Asp.AngularCore.git.Controller
     {
 
         private readonly IMailService _mailService;
-        private readonly LKContext _db;
+        private readonly ILKRepository _repository;
 
-        public AppController(IMailService mailService, LKContext db)
+        public AppController(IMailService mailService, ILKRepository repository)
         {
             _mailService = mailService;
-            _db = db;
+            _repository = repository;
         }
 
 
@@ -57,9 +56,8 @@ namespace Asp.AngularCore.git.Controller
 
         public IActionResult Shop()
         {
-            var result = from c in _db.Products orderby c.Category select c;
-
-            return View(result.ToList());
+            var result = _repository.GetAllProducts();
+            return View(result);
 
         }
 
