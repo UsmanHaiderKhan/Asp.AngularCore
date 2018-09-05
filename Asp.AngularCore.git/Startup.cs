@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace Asp.AngularCore.git
 {
@@ -24,7 +25,7 @@ namespace Asp.AngularCore.git
             services.AddTransient<IMailService, NullEmail>();
             services.AddTransient<LkSeeds>();
             services.AddScoped<ILKRepository, LKRepository>();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
