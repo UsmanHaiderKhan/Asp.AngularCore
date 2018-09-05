@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Angular Core App:@ViewBag.Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">*@
     <!-- Bootstrap core CSS -->
     <link href="~/MDB-Free/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -12,19 +12,19 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-light">
+    <div class="navbar navbar-light navbar-expand-md scrolling-navbar">
         <header class="container">
             <div class="">
                 <div class="navbar-brand">LK'Developers</div>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#men">&#9776;</button>
             </div>
-            <menu id="men" class="collapse navbar-collapse">
-                <ul>
-                    <li><a asp-controller="App" asp-action="Index"><span class="fa fa-home"></span>Home</a></li>
-                    <li><a asp-controller="App" asp-action="About"><span class="fa fa-user"></span>About</a></li>
-                    <li><a asp-controller="App" asp-action="Contact"><span class="fa fa-home"></span>Contact us</a></li>
+            <div id="men" class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Index"><span class="fa fa-home"></span>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="About"><span class="fa fa-user"></span>About</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Contact"><span class="fa fa-home"></span>Contact us</a></li>
                 </ul>
-            </menu>
+            </div>
         </header>
     </div>
     <section class="container">
