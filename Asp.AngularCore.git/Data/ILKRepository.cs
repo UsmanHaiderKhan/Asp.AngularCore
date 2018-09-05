@@ -8,5 +8,6 @@ namespace Asp.AngularCore.git.Data
         List<Product> GetAllProducts();
         List<Product> GetProductsByCategory(string category);
         bool SaveChanges();
+        IEnumerable<Order> GetAllOrders();
     }
 }
