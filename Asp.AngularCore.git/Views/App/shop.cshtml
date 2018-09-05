@@ -7,9 +7,9 @@
     @foreach (var v in Model)
     {
 
-        <div class="col-lg-3 product-card">
+        <div class="col-lg-3 col-md-4 col-sm-6 product-card">
             <img src="~/Img/Img/@(v.ArtId).jpg" class="img-thumbnail" alt="@v.Title" />
-            <h4>@v.Category - @v.Size</h4>
+            <h4 class="text-center ">@v.Category - @v.Size</h4>
             <ul class="product-info">
                 <li>Title:@v.Title</li>
                 <li>Price:@v.Price</li>
