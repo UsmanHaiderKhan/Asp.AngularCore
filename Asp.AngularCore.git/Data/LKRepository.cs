@@ -56,5 +56,10 @@ namespace Asp.AngularCore.git.Data
         {
             return _context.SaveChanges() > 0;
         }
+
+        public IEnumerable<Order> GetAllOrders()
+        {
+            return _context.Orders.ToList();
+        }
     }
 }
