@@ -18,7 +18,7 @@ namespace Asp.AngularCore.git.Controller
             _logger = logger;
         }
         [HttpGet]
-        public IActionResult GetOrder()
+        public IActionResult Get()
         {
             try
             {
@@ -31,5 +31,24 @@ namespace Asp.AngularCore.git.Controller
             }
 
         }
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                var order = _repository.GetOrderById(id);
+                if (order != null)
+                    return Ok(order);
+                else
+                    return NotFound();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Failed To Get All Products:{e}");
+                return BadRequest("Failed to Get the Orders");
+            }
+
+        }
+
     }
 }
