@@ -1,4 +1,5 @@
 ﻿using Asp.AngularCore.git.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace Asp.AngularCore.git.Data
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return _context.Orders.ToList();
+            return _context.Orders.Include(m => m.Items).ToList();
         }
     }
 }
