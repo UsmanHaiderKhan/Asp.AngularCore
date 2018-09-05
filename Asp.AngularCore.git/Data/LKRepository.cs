@@ -60,7 +60,15 @@ namespace Asp.AngularCore.git.Data
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return _context.Orders.Include(m => m.Items).ToList();
+            return _context.Orders.Include(m => m.Items).ThenInclude(m => m.Product).ToList();
+        }
+
+        public Order GetOrderById(int id)
+        {
+            return _context.Orders.Include(m => m.Items)
+                .ThenInclude(m => m.Product)
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
         }
     }
 }
