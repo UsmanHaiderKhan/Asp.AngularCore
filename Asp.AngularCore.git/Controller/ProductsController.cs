@@ -27,7 +27,7 @@ namespace Asp.AngularCore.git.Controller
             catch (Exception e)
             {
                 _logger.LogError($"Failed to Get the Products:{e}");
-                return BadRequest("Failed ");
+                return BadRequest("Failed to Get all the Products");
             }
 
         }
