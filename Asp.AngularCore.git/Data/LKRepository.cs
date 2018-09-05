@@ -1,4 +1,6 @@
 ﻿using Asp.AngularCore.git.Data.Entities;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,20 +9,32 @@ namespace Asp.AngularCore.git.Data
     public class LKRepository : ILKRepository
     {
         private readonly LKContext _context;
+        private readonly ILogger<LKRepository> _logger;
 
-        public LKRepository(LKContext context)
+        public LKRepository(LKContext context, ILogger<LKRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public List<Product> GetAllProducts()
         {
-            using (_context)
+            try
             {
-                return (from c in _context.Products
-                    .OrderBy(m => m.Title)
-                        select c).ToList();
+                _logger.LogInformation("We call the All Products");
+                using (_context)
+                {
+                    return (from c in _context.Products
+                            .OrderBy(m => m.Title)
+                            select c).ToList();
+                }
             }
+            catch (Exception e)
+            {
+                _logger.LogError($"Failed to Get All Products:{e}");
+                return null;
+            }
+
         }
 
         public List<Product> GetProductsByCategory(string category)
