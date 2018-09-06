@@ -70,5 +70,10 @@ namespace Asp.AngularCore.git.Data
                 .Where(c => c.Id == id)
                 .FirstOrDefault();
         }
+
+        public void AddNewOrder(Order order)
+        {
+            _context.Add(order);
+        }
     }
 }

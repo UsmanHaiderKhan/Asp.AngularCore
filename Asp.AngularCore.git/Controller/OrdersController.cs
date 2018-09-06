@@ -1,4 +1,5 @@
 ﻿using Asp.AngularCore.git.Data;
+using Asp.AngularCore.git.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
@@ -50,5 +51,24 @@ namespace Asp.AngularCore.git.Controller
 
         }
 
+        [HttpPost]
+        public IActionResult Post([FromBody]Order order)
+        {
+            try
+            {
+                _repository.AddNewOrder(order);
+                if (_repository.SaveAll())
+                {
+                    return Created($"/api/orders/{order.Id}", order);
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Failed to Post the Product:{e}...! :)");
+
+            }
+
+            return BadRequest("Failed To Added");
+        }
     }
 }
