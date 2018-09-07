@@ -1,10 +1,11 @@
 ﻿using Asp.AngularCore.git.Data;
+using Asp.AngularCore.git.Data.Entities;
 using Asp.AngularCore.git.ViewModel;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using System;
-using Asp.AngularCore.git.Data.Entities;
 
 namespace Asp.AngularCore.git.Controller
 {
@@ -13,11 +14,15 @@ namespace Asp.AngularCore.git.Controller
     {
         private readonly ILKRepository _repository;
         private readonly ILogger<LKRepository> _logger;
+        private readonly IMapper _mapper;
 
-        public OrdersController(ILKRepository repository, ILogger<LKRepository> logger)
+        public OrdersController(ILKRepository repository,
+            ILogger<LKRepository> logger,
+            IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult Get()
@@ -40,7 +45,7 @@ namespace Asp.AngularCore.git.Controller
             {
                 var order = _repository.GetOrderById(id);
                 if (order != null)
-                    return Ok(order);
+                    return Ok(_mapper.Map<Order, OrderViewModel>(order));
                 else
                     return NotFound();
             }
@@ -65,11 +70,22 @@ namespace Asp.AngularCore.git.Controller
                         OrderDate = model.OrderDate,
                         Id = model.OrderId
                     };
-
+                    if (order.OrderDate == DateTime.MinValue)
+                    {
+                        order.OrderDate = DateTime.Now;
+                    }
                     _repository.AddNewOrder(order);
                     if (_repository.SaveAll())
                     {
-                        return Created($"/api/orders/{model.Id}", model);
+                        var vm = new OrderViewModel()
+                        {
+                            OrderNumber = order.OrderNumber,
+                            OrderDate = order.OrderDate,
+                            OrderId = order.Id
+
+
+                        };
+                        return Created($"/api/orders/{vm.OrderId}", vm);
                     }
                 }
                 else
