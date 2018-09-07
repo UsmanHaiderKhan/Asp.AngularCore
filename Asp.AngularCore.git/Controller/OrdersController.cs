@@ -65,28 +65,16 @@ namespace Asp.AngularCore.git.Controller
             {
                 if (ModelState.IsValid)
                 {
-                    var order = new Order
+                    var neworder = _mapper.Map<OrderViewModel, Order>(model);
+                    if (neworder.OrderDate == DateTime.MinValue)
                     {
-                        OrderNumber = model.OrderNumber,
-                        OrderDate = model.OrderDate,
-                        Id = model.OrderId
-                    };
-                    if (order.OrderDate == DateTime.MinValue)
-                    {
-                        order.OrderDate = DateTime.Now;
+                        neworder.OrderDate = DateTime.Now;
                     }
-                    _repository.AddNewOrder(order);
+                    _repository.AddNewOrder(neworder);
                     if (_repository.SaveAll())
                     {
-                        var vm = new OrderViewModel()
-                        {
-                            OrderNumber = order.OrderNumber,
-                            OrderDate = order.OrderDate,
-                            OrderId = order.Id
 
-
-                        };
-                        return Created($"/api/orders/{vm.OrderId}", vm);
+                        return Created($"/api/orders/{neworder.Id}", _mapper.Map<Order, OrderViewModel>(neworder));
                     }
                 }
                 else
