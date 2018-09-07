@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Asp.AngularCore.git.ViewModel
@@ -11,5 +12,9 @@ namespace Asp.AngularCore.git.ViewModel
         [MinLength(4)]
         public string OrderNumber { get; set; }
 
+        public ICollection<OrderItemViewModel> Items { get; set; }
+
     }
+
+
 }
