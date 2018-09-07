@@ -1,9 +1,10 @@
 ﻿using Asp.AngularCore.git.Data;
-using Asp.AngularCore.git.Data.Entities;
+using Asp.AngularCore.git.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using System;
+using Asp.AngularCore.git.Data.Entities;
 
 namespace Asp.AngularCore.git.Controller
 {
@@ -52,14 +53,28 @@ namespace Asp.AngularCore.git.Controller
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Order order)
+        public IActionResult Post([FromBody]OrderViewModel model)
         {
             try
             {
-                _repository.AddNewOrder(order);
-                if (_repository.SaveAll())
+                if (ModelState.IsValid)
                 {
-                    return Created($"/api/orders/{order.Id}", order);
+                    var order = new Order
+                    {
+                        OrderNumber = model.OrderNumber,
+                        OrderDate = model.OrderDate,
+                        Id = model.OrderId
+                    };
+
+                    _repository.AddNewOrder(order);
+                    if (_repository.SaveAll())
+                    {
+                        return Created($"/api/orders/{model.Id}", model);
+                    }
+                }
+                else
+                {
+                    return BadRequest(ModelState);
                 }
             }
             catch (Exception e)
