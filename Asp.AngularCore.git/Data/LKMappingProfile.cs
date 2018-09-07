@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Asp.AngularCore.git.Data.Entities;
+using Asp.AngularCore.git.ViewModel;
+using AutoMapper;
 
 namespace Asp.AngularCore.git.Data
 {
-    public class LKMappingProfile
+    public class LKMappingProfile : Profile
     {
-        
+        public LKMappingProfile()
+        {
+            CreateMap<Order, OrderViewModel>();
+        }
     }
 }
