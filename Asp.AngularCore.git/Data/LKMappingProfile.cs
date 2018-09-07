@@ -8,7 +8,8 @@ namespace Asp.AngularCore.git.Data
     {
         public LKMappingProfile()
         {
-            CreateMap<Order, OrderViewModel>();
+            CreateMap<Order, OrderViewModel>()
+                .ForMember(m => m.OrderId, ex => ex.MapFrom(o => o.Id));
         }
     }
 }
