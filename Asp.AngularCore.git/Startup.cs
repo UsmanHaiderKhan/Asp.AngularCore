@@ -1,5 +1,6 @@
 ﻿using Asp.AngularCore.git.Data;
 using Asp.AngularCore.git.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,9 @@ namespace Asp.AngularCore.git
             services.AddDbContext<LKContext>(cfg => { cfg.UseSqlServer(_configuration.GetConnectionString("LKConnectionString")); });
             services.AddTransient<IMailService, NullEmail>();
             services.AddTransient<LkSeeds>();
+
+            services.AddAutoMapper();
+
             services.AddScoped<ILKRepository, LKRepository>();
             services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
