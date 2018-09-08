@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Collections.Specialized
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,6 +22,15 @@
                     <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Index"><span class="fa fa-home"></span>Home</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="About"><span class="fa fa-user"></span>About</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Contact"><span class="fa fa-home"></span>Contact us</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Shop"><span class="fa fa-home"></span>Shop</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout"><span class="fa fa-signout"></span>Logout</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login"><span class="fa fa-home"></span>Login</a></li>
+                    }
                 </ul>
             </div>
         </header>
@@ -39,6 +49,9 @@
     <script type="text/javascript" src="~/MDB-Free/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="~/MDB-Free/js/mdb.min.js"></script>
+    <script src="~/Script/jquery.validate.min.js"></script>
+    <script src="~/Script/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/ProjectScript.js"></script>
+    @RenderSection("script", required: false)
 </body>
 </html>
