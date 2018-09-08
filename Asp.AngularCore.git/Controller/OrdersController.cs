@@ -26,11 +26,12 @@ namespace Asp.AngularCore.git.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(bool includeitems = true)
         {
             try
             {
-                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(_repository.GetAllOrders()));
+                var result = _repository.GetAllProducts(includeitems);
+                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(result));
             }
             catch (Exception e)
             {
