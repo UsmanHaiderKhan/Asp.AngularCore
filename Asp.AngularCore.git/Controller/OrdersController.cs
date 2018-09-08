@@ -30,7 +30,7 @@ namespace Asp.AngularCore.git.Controller
         {
             try
             {
-                var result = _repository.GetAllProducts(includeitems);
+                var result = _repository.GetAllOrders(includeitems);
                 return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(result));
             }
             catch (Exception e)
