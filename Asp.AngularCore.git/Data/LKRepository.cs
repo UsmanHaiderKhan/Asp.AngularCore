@@ -18,7 +18,7 @@ namespace Asp.AngularCore.git.Data
             _logger = logger;
         }
 
-        public List<Product> GetAllProducts()
+        public List<Product> GetAllProducts(bool includeitems)
         {
             try
             {
