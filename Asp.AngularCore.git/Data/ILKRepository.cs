@@ -5,10 +5,10 @@ namespace Asp.AngularCore.git.Data
 {
     public interface ILKRepository
     {
-        List<Product> GetAllProducts(bool includeitem);
+        List<Product> GetAllProducts();
         List<Product> GetProductsByCategory(string category);
         bool SaveAll();
-        IEnumerable<Order> GetAllOrders();
+        IEnumerable<Order> GetAllOrders(bool includeitems);
         Order GetOrderById(int id);
         void AddNewOrder(Order order);
     }
