@@ -5,7 +5,7 @@ namespace Asp.AngularCore.git.Data
 {
     public interface ILKRepository
     {
-        List<Product> GetAllProducts();
+        List<Product> GetAllProducts(bool includeitem);
         List<Product> GetProductsByCategory(string category);
         bool SaveAll();
         IEnumerable<Order> GetAllOrders();
