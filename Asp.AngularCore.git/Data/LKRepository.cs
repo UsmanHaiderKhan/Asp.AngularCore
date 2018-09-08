@@ -18,8 +18,9 @@ namespace Asp.AngularCore.git.Data
             _logger = logger;
         }
 
-        public List<Product> GetAllProducts(bool includeitems)
+        public List<Product> GetAllProducts()
         {
+
             try
             {
                 _logger.LogInformation("We call the All Products");
@@ -58,9 +59,19 @@ namespace Asp.AngularCore.git.Data
             return _context.SaveChanges() > 0;
         }
 
-        public IEnumerable<Order> GetAllOrders()
+        public IEnumerable<Order> GetAllOrders(bool includeitems)
         {
-            return _context.Orders.Include(m => m.Items).ThenInclude(m => m.Product).ToList();
+            if (includeitems)
+            {
+                return _context.Orders
+                    .Include(m => m.Items)
+                    .ThenInclude(m => m.Product).ToList();
+            }
+            else
+            {
+                return _context.Orders.ToList();
+            }
+
         }
 
         public Order GetOrderById(int id)
