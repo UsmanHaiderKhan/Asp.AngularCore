@@ -1,6 +1,7 @@
 ﻿using Asp.AngularCore.git.Data;
 using Asp.AngularCore.git.Services;
 using Asp.AngularCore.git.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Asp.AngularCore.git.Controller
@@ -53,7 +54,8 @@ namespace Asp.AngularCore.git.Controller
         {
             return View();
         }
-
+        [Authorize]
+        [HttpGet]
         public IActionResult Shop()
         {
             var result = _repository.GetAllProducts();
