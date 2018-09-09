@@ -1,0 +1,7 @@
+﻿{
+  "exclude": [ "wwwroot/ts/**/*.ts" ],
+  "compilerOptions": {
+    "target": "es6",
+    "sourceMap": true
+  }
+}
