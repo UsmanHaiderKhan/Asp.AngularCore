@@ -1,9 +1,10 @@
 ﻿using Asp.AngularCore.git.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Asp.AngularCore.git.Data
 {
-    public class LKContext : DbContext
+    public class LKContext : IdentityDbContext<StoreUser>
     {
         public LKContext(DbContextOptions<LKContext> options) : base(options)
         {
