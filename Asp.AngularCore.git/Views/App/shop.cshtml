@@ -1,5 +1,10 @@
 ﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model IEnumerable<Product>
+@section script
+    {
+    <script src="~/ts/storecustomer.js"></script>
+    <script src="~/ts/main.js"></script>
+}
 <link href="~/css/styles.css" rel="stylesheet" />
 <h1>Model Count</h1>
 <p>Count : @Model.Count() </p>
