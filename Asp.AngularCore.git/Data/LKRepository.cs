@@ -74,11 +74,11 @@ namespace Asp.AngularCore.git.Data
 
         }
 
-        public Order GetOrderById(int id)
+        public Order GetOrderById(string username, int id)
         {
             return _context.Orders.Include(m => m.Items)
                 .ThenInclude(m => m.Product)
-                .Where(c => c.Id == id)
+                .Where(c => c.Id == id && c.User.UserName == username)
                 .FirstOrDefault();
         }
 
@@ -86,5 +86,21 @@ namespace Asp.AngularCore.git.Data
         {
             _context.Add(order);
         }
+
+        public IEnumerable<Order> GetOrderByUser(string username, bool includeitems)
+        {
+            if (includeitems)
+            {
+                return _context.Orders.Where(o => o.User.UserName == username)
+                    .Include(m => m.Items)
+                    .ThenInclude(m => m.Product).ToList();
+            }
+            else
+            {
+                return _context.Orders.Where(o => o.User.UserName == username).ToList();
+            }
+
+        }
+
     }
 }
