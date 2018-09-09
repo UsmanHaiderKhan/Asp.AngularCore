@@ -9,7 +9,9 @@ namespace Asp.AngularCore.git.Data
         List<Product> GetProductsByCategory(string category);
         bool SaveAll();
         IEnumerable<Order> GetAllOrders(bool includeitems);
-        Order GetOrderById(int id);
+        IEnumerable<Order> GetOrderByUser(string username, bool includeitems);
+        Order GetOrderById(string username, int id);
         void AddNewOrder(Order order);
+
     }
 }
